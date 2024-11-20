@@ -1,4 +1,4 @@
-import {cart, removeFromCart} from '../data/cart.js';
+import {cart, removeFromCart, updateDeliveryOption} from '../data/cart.js';
 import { products } from '../data/products.js';
 import {formatCurrency} from './utils/money.js';
 import {hello} from 'https://unpkg.com/supersimpledev@1.0.1/hello.esm.js';
@@ -144,5 +144,13 @@ document.querySelector('.js-order-summary')
     `.js-cart-item-container-${productId}`
    );
    container.remove(); 
+   });
+ });
+
+ document.querySelectorAll('.js-delivery-option')
+ .forEach((element) => {
+   element.addEventListener('click', () => {
+    const {productId,deliveryOptionId} = element.dataset;
+    updateDeliveryOption(productId, deliveryOptionId); 
    });
  });
